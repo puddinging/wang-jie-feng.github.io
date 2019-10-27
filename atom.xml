@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://wangjiefeng.gitee.io/"/>
+  <link href="wang-jie-feng.github.io/"/>
   <updated>2019-10-27T03:00:27.807Z</updated>
-  <id>https://wangjiefeng.gitee.io/</id>
+  <id>wang-jie-feng.github.io/</id>
   
   <author>
     <name>王杰峰</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>nginx安装笔记</title>
-    <link href="https://wangjiefeng.gitee.io/2019/10/27/nginx/"/>
-    <id>https://wangjiefeng.gitee.io/2019/10/27/nginx/</id>
+    <link href="wang-jie-feng.github.io/2019/10/27/nginx/"/>
+    <id>wang-jie-feng.github.io/2019/10/27/nginx/</id>
     <published>2019-10-26T19:20:26.202Z</published>
     <updated>2019-10-27T03:00:27.807Z</updated>
     
@@ -32,19 +32,19 @@
     </summary>
     
     
-      <category term="nginx" scheme="https://wangjiefeng.gitee.io/categories/nginx/"/>
+      <category term="nginx" scheme="wang-jie-feng.github.io/categories/nginx/"/>
     
     
-      <category term="nginx" scheme="https://wangjiefeng.gitee.io/tags/nginx/"/>
+      <category term="nginx" scheme="wang-jie-feng.github.io/tags/nginx/"/>
     
-      <category term="笔记" scheme="https://wangjiefeng.gitee.io/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="wang-jie-feng.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>linuxQQ发布</title>
-    <link href="https://wangjiefeng.gitee.io/2019/10/27/linuxqq/"/>
-    <id>https://wangjiefeng.gitee.io/2019/10/27/linuxqq/</id>
+    <link href="wang-jie-feng.github.io/2019/10/27/linuxqq/"/>
+    <id>wang-jie-feng.github.io/2019/10/27/linuxqq/</id>
     <published>2019-10-26T19:20:26.199Z</published>
     <updated>2019-10-27T03:00:10.414Z</updated>
     
@@ -57,12 +57,12 @@
     </summary>
     
     
-      <category term="linux" scheme="https://wangjiefeng.gitee.io/categories/linux/"/>
+      <category term="linux" scheme="wang-jie-feng.github.io/categories/linux/"/>
     
     
-      <category term="Linux" scheme="https://wangjiefeng.gitee.io/tags/Linux/"/>
+      <category term="Linux" scheme="wang-jie-feng.github.io/tags/Linux/"/>
     
-      <category term="qq" scheme="https://wangjiefeng.gitee.io/tags/qq/"/>
+      <category term="qq" scheme="wang-jie-feng.github.io/tags/qq/"/>
     
   </entry>
   
