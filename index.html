@@ -174,6 +174,134 @@
             
 
   
+    <article id="post-docker-compose安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2019/10/28/docker-compose%E5%AE%89%E8%A3%85/" target="_blank">docker-compose的安装</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2019/10/28/docker-compose%E5%AE%89%E8%A3%85/" class="archive-article-date">
+        <time datetime="2019-10-28T03:55:12.773Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-28</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="docker-compose的安装"><a href="#docker-compose的安装" class="headerlink" title="docker-compose的安装"></a>docker-compose的安装</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+<li>使用 Docker Compose 可以轻松、高效的管理容器，它是一个用于定义和运行多容器 Docker 的应用程序工具</li>
+<li>安装分为两种方式，一种是使用pip安装，一种是手工安装</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h2 id="手工安装方式"><a href="#手工安装方式" class="headerlink" title="手工安装方式"></a>手工安装方式</h2><ol>
+<li><p>使用curl安装，代码如下  <code>sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose</code></p>
+</li>
+<li><p>使用wget安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo wget -O /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/1.23.1/docker-compose-`uname -s`-`uname -m`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装之后可以需要赋予运行权限<code>sudo chmod +x /usr/local/bin/docker-compose</code></p>
+</li>
+<li><p>赋予启动权限之后需要启动一下 <code>./usr/local/bin/docker-compose</code></p>
+</li>
+<li><p>之后可以运行一下<code>sudo docker-compose version</code>来查看一下是否安装成功</p>
+</li>
+</ol>
+<h2 id="Pip安装"><a href="#Pip安装" class="headerlink" title="Pip安装"></a>Pip安装</h2><ol>
+<li>通过<code>pip -v</code>检查pip 是否安装及版本 </li>
+<li><code>yum -y install epel-release</code> 安装pip基础 </li>
+<li><code>yum install python-pip</code> 安装pip的python 支持 </li>
+<li><code>pip install --upgrade pip</code> 完成pip的安装 </li>
+<li><code>pip install docker-compose</code>  安装docker-compose </li>
+</ol>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">docker-compose</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/docker-compse//" class="article-tag-list-link color4">docker-compse</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2019/10/28/docker-compose%E5%AE%89%E8%A3%85/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数据结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -651,6 +779,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">docker-compose</a>
               </li>
             
             <div class="clearfix"></div>
