@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="wang-jie-feng.github.io/"/>
-  <updated>2019-10-28T04:22:16.960Z</updated>
+  <updated>2019-10-28T10:21:14.718Z</updated>
   <id>wang-jie-feng.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jenkins的安装</title>
+    <link href="wang-jie-feng.github.io/2019/10/28/jendins%E5%AE%89%E8%A3%85/"/>
+    <id>wang-jie-feng.github.io/2019/10/28/jendins安装/</id>
+    <published>2019-10-28T06:21:34.477Z</published>
+    <updated>2019-10-28T10:21:14.718Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul><li>jenkins是一个个简单易用的持续集成平台，在此我使用docker的方式部署</li><li>需要主机安装docker和dockercompose，之前已经安装过了，可以参考</li></ul><a id="more"></a>    <h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><h3 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h3><ol><li><p>docker配置文件，<code>docker-compose.yml</code></p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3.1'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  jenkins:</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">jenkinsci/jenkins</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">jenkins</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line">      <span class="comment"># 发布端口</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">8080</span><span class="string">:8080</span></span><br><span class="line">      <span class="comment"># 基于 JNLP 的 Jenkins 代理通过 TCP 端口 50000 与 Jenkins master 进行通信</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">50000</span><span class="string">:50000</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      TZ:</span> <span class="string">Asia/Shanghai</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">./data:/var/jenkins_home</span></span><br></pre></td></tr></table></figure></li><li><p>在和配置文件相同的文件夹下，使用<code>docker-compose up -d</code>,默认使用<code>docker-compose.yml</code></p></li><li><p>安装完成之后使用<code>docker logs jenkins</code>可获得初始密码</p></li></ol><h3 id="jenkins"><a href="#jenkins" class="headerlink" title="jenkins"></a>jenkins</h3><ol><li><p>打开<code>ip:8080</code>,进入jenkins控制台开始安装，在此选择<code>select plugins to install</code>，注意记得选择<code>user management and security</code>下的<code>Publish Over SSH</code></p><p><img src="https://raw.githubusercontent.com/wang-jie-feng/images/master/image20191028150741.png" alt=""></p></li><li><p>点击安装，安装过程可能比较长，视个人网络环境和电脑配置而定，可以耐心等待一会，当时我安装的时候等了半个多小时还在安装，所以一定要有耐心。</p><p><img src="https://raw.githubusercontent.com/wang-jie-feng/images/master/image20191028150648.png" alt=""></p></li><li><p>有些插件可能安装失败，不过不用担心，可以之后手动安装。</p></li></ol><h3 id="安装成功"><a href="#安装成功" class="headerlink" title="安装成功"></a>安装成功</h3><ol><li>安装成功之后需要创建第一个管理员用户，按照提示完成即可</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      jenkins的安装笔记
+    
+    </summary>
+    
+    
+      <category term="jenkins" scheme="wang-jie-feng.github.io/categories/jenkins/"/>
+    
+    
+      <category term="docker" scheme="wang-jie-feng.github.io/tags/docker/"/>
+    
+      <category term="笔记" scheme="wang-jie-feng.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="jenkins" scheme="wang-jie-feng.github.io/tags/jenkins/"/>
+    
+  </entry>
   
   <entry>
     <title>docker-compose的安装</title>

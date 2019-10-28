@@ -6,18 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="wang-jie-feng.github.io">
-  <title>Archives: 2019/10 | 杰峰的博客</title>
+  <title>jenkins的安装 | 杰峰的博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="君子藏器于身，待时而动">
-<meta property="og:type" content="website">
-<meta property="og:title" content="杰峰的博客">
-<meta property="og:url" content="wang-jie-feng.github.io&#x2F;archives&#x2F;2019&#x2F;10&#x2F;index.html">
+  <meta name="description" content="jenkins的安装笔记">
+<meta name="keywords" content="docker,笔记,jenkins">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jenkins的安装">
+<meta property="og:url" content="wang-jie-feng.github.io&#x2F;2019&#x2F;10&#x2F;28&#x2F;jendins%E5%AE%89%E8%A3%85&#x2F;index.html">
 <meta property="og:site_name" content="杰峰的博客">
-<meta property="og:description" content="君子藏器于身，待时而动">
+<meta property="og:description" content="jenkins的安装笔记">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;wang-jie-feng&#x2F;images&#x2F;master&#x2F;image20191028150741.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;wang-jie-feng&#x2F;images&#x2F;master&#x2F;image20191028150648.png">
+<meta property="og:updated_time" content="2019-10-28T10:21:14.718Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;wang-jie-feng&#x2F;images&#x2F;master&#x2F;image20191028150741.png">
   
     <link rel="alternative" href="/atom.xml" title="杰峰的博客" type="application/atom+xml">
   
@@ -168,41 +173,147 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-jendins安装" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/10/28/jendins%E5%AE%89%E8%A3%85/" class="archive-article-date">
-        <time datetime="2019-10-28T06:21:34.477Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-28</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/10/28/jendins%E5%AE%89%E8%A3%85/" target="_blank">jenkins的安装</a>
   
+    <h1 class="article-title" itemprop="name">
+      jenkins的安装
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2019/10/28/jendins%E5%AE%89%E8%A3%85/" class="archive-article-date">
+        <time datetime="2019-10-28T06:21:34.477Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-28</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">309字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">1分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+<li>jenkins是一个个简单易用的持续集成平台，在此我使用docker的方式部署</li>
+<li>需要主机安装docker和dockercompose，之前已经安装过了，可以参考</li>
+</ul>
+<a id="more"></a>    
+
+<h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><h3 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h3><ol>
+<li><p>docker配置文件，<code>docker-compose.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3.1'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  jenkins:</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">jenkinsci/jenkins</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">jenkins</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line">      <span class="comment"># 发布端口</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">8080</span><span class="string">:8080</span></span><br><span class="line">      <span class="comment"># 基于 JNLP 的 Jenkins 代理通过 TCP 端口 50000 与 Jenkins master 进行通信</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">50000</span><span class="string">:50000</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      TZ:</span> <span class="string">Asia/Shanghai</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">./data:/var/jenkins_home</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在和配置文件相同的文件夹下，使用<code>docker-compose up -d</code>,默认使用<code>docker-compose.yml</code></p>
+</li>
+<li><p>安装完成之后使用<code>docker logs jenkins</code>可获得初始密码</p>
+</li>
+</ol>
+<h3 id="jenkins"><a href="#jenkins" class="headerlink" title="jenkins"></a>jenkins</h3><ol>
+<li><p>打开<code>ip:8080</code>,进入jenkins控制台开始安装，在此选择<code>select plugins to install</code>，注意记得选择<code>user management and security</code>下的<code>Publish Over SSH</code></p>
+<p><img src="https://raw.githubusercontent.com/wang-jie-feng/images/master/image20191028150741.png" alt=""></p>
+</li>
+<li><p>点击安装，安装过程可能比较长，视个人网络环境和电脑配置而定，可以耐心等待一会，当时我安装的时候等了半个多小时还在安装，所以一定要有耐心。</p>
+<p><img src="https://raw.githubusercontent.com/wang-jie-feng/images/master/image20191028150648.png" alt=""></p>
+</li>
+<li><p>有些插件可能安装失败，不过不用担心，可以之后手动安装。</p>
+</li>
+</ol>
+<h3 id="安装成功"><a href="#安装成功" class="headerlink" title="安装成功"></a>安装成功</h3><ol>
+<li>安装成功之后需要创建第一个管理员用户，按照提示完成即可</li>
+</ol>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.jpg">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          王杰峰
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="wang-jie-feng.github.io/2019/10/28/jendins安装/" title="jenkins的安装" target="_blank">wang-jie-feng.github.io/2019/10/28/jendins安装/</a>
+        </li>
+        <li>
+          <strong>版权声明： </strong>
+          本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+        </li>
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -222,7 +333,7 @@
 		</ul>
 	</div>
 
-          
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -235,253 +346,105 @@
 	</div>
 
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http:wang-jie-feng.github.io/2019/10/28/jendins%E5%AE%89%E8%A3%85/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/10/28/docker-compose%E5%AE%89%E8%A3%85/" class="archive-article-date">
-        <time datetime="2019-10-28T03:55:12.773Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-28</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/28/docker-compose%E5%AE%89%E8%A3%85/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">docker-compose的安装</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/10/28/docker-compose%E5%AE%89%E8%A3%85/" target="_blank">docker-compose的安装</a>
-  
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">docker-compose</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/docker-compse//" class="article-tag-list-link color4">docker-compse</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/10/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="archive-article-date">
-        <time datetime="2019-10-28T01:47:49.819Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-28</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/10/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" target="_blank">数据结构笔记</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构//" class="article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-page">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/10/27/nginx/" class="archive-article-date">
-        <time datetime="2019-10-26T19:20:26.202Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-27</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/10/27/nginx/" target="_blank">nginx安装笔记</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/nginx//" class="article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-page">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/10/27/linuxqq/" class="archive-article-date">
-        <time datetime="2019-10-26T19:20:26.199Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-27</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/10/27/linuxqq/" target="_blank">linuxQQ发布</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">qq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/linux//" class="article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -522,8 +485,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
