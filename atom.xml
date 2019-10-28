@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="wang-jie-feng.github.io/"/>
-  <updated>2019-10-27T03:00:27.807Z</updated>
+  <updated>2019-10-28T01:47:30.268Z</updated>
   <id>wang-jie-feng.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据结构笔记</title>
+    <link href="wang-jie-feng.github.io/2019/10/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <id>wang-jie-feng.github.io/2019/10/28/数据结构/</id>
+    <published>2019-10-28T01:47:49.819Z</published>
+    <updated>2019-10-28T01:47:30.268Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><ol><li>线性结构<ol><li>数组：栈</li><li>队列：链表</li><li>哈希表</li></ol></li><li>树结构<ol><li>二叉树</li><li>二分搜索树</li><li>AVL</li><li>红黑树</li><li>Treap</li><li>Splay</li><li>堆</li></ol></li><li>图结构<ol><li>邻接矩阵</li><li>邻接表</li></ol></li></ol><a id="more"></a>    <h1 id="线性结构数据结构"><a href="#线性结构数据结构" class="headerlink" title="线性结构数据结构"></a>线性结构数据结构</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ol><li>数组基础</li><li>概念：将数据码成一排进行存放</li><li>简单的复杂度分析</li></ol><h2 id="栈（Stack）"><a href="#栈（Stack）" class="headerlink" title="栈（Stack）"></a>栈（Stack）</h2><ol><li>一种线性结构</li><li>相比数组，栈对应的操作是数组的子集</li><li>只能从一端添加元素，也只能从一端取出元素，称为栈顶</li><li>栈是一种后进先出的数据结构(Last In First Out)</li><li>特别适合计算机世界，拥有不可思议的作用</li><li>栈的应用<ol><li>撤销(Undo)，计算机会将操作放入栈中，记录操作，取出栈顶元素</li><li>程序调用使用的系统栈，可以保存中断的程序记录，回到上层中断的位置，继续执行程序，子过程自逻辑的调用</li></ol></li><li>栈的实现</li><li>栈的另一个应用：括号匹配</li></ol><h2 id="队列（Queue）"><a href="#队列（Queue）" class="headerlink" title="队列（Queue）"></a>队列（Queue）</h2><ol><li>一种线性结构</li><li>相比数组，队列对应的操作是数组的子集</li><li>只能从一端（队尾）添加元素，从另一端（队首）取出元素</li><li>类似于生活中的排队，新元素从末尾加入，从队首离开</li><li>是一种先进先出的数据结构（先到先得）（First In First Out）</li><li>循环队列<ol><li>front == tail 队列空</li><li>tail + 1 == front 队列满</li><li>循环队列复杂度比普通队列低，所以执行效率比较高</li></ol></li></ol><h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><ol><li>真正的动态数据结构</li><li>最简单的动态数据结构</li><li>更深入的理解引用（指针）</li><li>深入理解递归</li><li>详情：<ol><li>数据存储在节点中</li><li>一部分是数据</li><li>一部分是另一个节点，即是当前一个节点的下一个节点</li></ol></li><li>优点：真正的动态，不需要处理固定容量的问题</li><li>缺点：丧失了随机访问的能力</li><li>链表的时间复杂度分析<ol><li>添加操作<ol><li>尾部 O(n)</li><li>头O(1)</li><li>任意位置O(n/2)=O(n)</li></ol></li><li>删除操作<ol><li>最后一个 O(n)</li><li>第一个 O(1)</li><li>任意一个O(n/2) = O(n)</li></ol></li><li>修改操作<ol><li>O(n)</li></ol></li><li>查找操作<ol><li>O(n)</li></ol></li></ol></li></ol><h2 id="链表和数组的对比"><a href="#链表和数组的对比" class="headerlink" title="链表和数组的对比"></a>链表和数组的对比</h2><ol><li>数组最好用于索引有语义的情况</li><li>优点：支持快速查询</li><li>链表不适合用于索引有语义的情况</li><li>优点：动态</li></ol><h2 id="链表与递归"><a href="#链表与递归" class="headerlink" title="链表与递归"></a>链表与递归</h2><ol><li>递归<ol><li>注意递归函数的“宏观语义”</li><li>递归函数就是一个函数，完成一个功能</li><li>注意不要陷入递归函数的微观，容易将自己绕迷，要从大局上把握</li><li>解决最基本的情况，分解问题，然后当做子函数调用，之后根据子函数返回的值来构建函数</li><li>递归的微观解读<ul><li>递归的调用其实就是调用一个函数，并没有任何区别</li><li>链表具有天然的递归特性</li></ul></li><li>双链表<ol><li>每一个节点同时指向前一个和后一个节点</li></ol></li><li>循环链表<ul><li>使用一个虚拟头结点</li><li>尾节点不指向null而是指向虚拟头结点</li></ul></li></ol></li></ol><h1 id="树结构"><a href="#树结构" class="headerlink" title="树结构"></a>树结构</h1><ol><li>树结构是一种天然的组织结构</li><li>优点<ul><li>高效，比较容易检索</li><li>使用某些数据结构后，可以更加高效，可能有一些必须使用树结构，不然无法解决</li></ul></li><li>分类<ol><li>二分搜索树</li><li>平衡二叉树(Binary Search Tree)<ul><li>AVL</li><li>红黑树</li></ul></li><li>堆</li><li>并查集</li><li>线段树</li><li>Trie（字典树，前缀树）</li></ol></li></ol><h2 id="二分搜索树"><a href="#二分搜索树" class="headerlink" title="二分搜索树"></a>二分搜索树</h2><ul><li>动态数据结构    </li><li>类似于链表，有两个节点，左节点和右节点</li><li>多叉树，但是绝大部分都是二叉树</li><li>二叉树具有唯一的根节点</li><li>每一个节点有两个节点，叫做左孩子，右孩子</li><li>二叉树中每个节点最多有两个孩子</li><li>一个孩子没有的节点，叫做叶子</li><li>每个节点最多有一个父亲节点，只有一个节点没有父亲节点，就是根节点</li><li>具有天然的递归结构，强调递归结构</li><li>每个节点的左右子树都是二叉树，所以天然具有递归结构</li><li>二叉树不一定是满的</li><li>二分搜索树是一个二叉树</li><li>二分搜索树每个节点的值<ul><li>大于其左子树所有的节点</li><li>小于其右子树的所有节点的值</li></ul></li><li>每一棵字数也是一个二分搜索树</li><li>存储的元素必须具有可比较性，也是一种局限性，但是这是为了提升搜索效率</li><li>删除操作<ol><li>删除最小值：左孩子一直往下到空值</li><li>删除最大值：右孩子一直往下到空值</li><li>删除任意一个值<ol><li>如果右孩子空，仅删除自己然后将左孩子和上一个连起来</li><li>如果左孩子空，仅删除自己然后将右孩子和上一个连起来</li><li>如果都不符合，那么将右孩子的最小值的左孩子设成当前节点的左孩子，右孩子设置成当前节点的右孩子，并删除当前节点<h1 id="高层数据结构"><a href="#高层数据结构" class="headerlink" title="高层数据结构"></a>高层数据结构</h1></li></ol></li></ol></li></ul><h2 id="集合-set"><a href="#集合-set" class="headerlink" title="集合(set)"></a>集合(set)</h2><ol><li>复杂度分析(LinkedListSet)：<ol><li>增：O(n)</li><li>查：O(n)</li><li>删：O(n)</li></ol></li><li>复杂度分析(BSTSet)：平均复杂度，即是最优情况，二分搜索树可能退化成链表那么就是和链表一样<ol><li>增：O(logn) h为二分搜索树的高度</li><li>查：O(logn)</li><li>删：O(logn)</li></ol></li><li>随着n的增大，差距越来越大</li><li>有序集合和无须集合<ol><li>二分搜索树之类是有序的-&gt;基于搜索树实现的</li><li>链表是无序的-&gt;基于哈希表实现</li></ol></li></ol><h2 id="映射-map"><a href="#映射-map" class="headerlink" title="映射(map)"></a>映射(map)</h2><ol><li>字典</li><li>键值对的数据结构</li><li>根据键来查找值</li><li>可以使用链表或者二分搜索树来实现：增加两个数据，键和值</li><li>复杂度分析</li><li>有序映射中的键具有顺序性，无序映射无序</li></ol><h2 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列"></a>优先队列</h2><ol><li>普通队列，先进先出，后进后出，优先队列：出队顺序和入队顺序无关，和优先级相关</li><li>典型应用：<ol><li>操作系统的任务，动态选择优先级高的任务执行</li><li>不知道总量，要随时根据新来的总量来调整任务优先级</li></ol></li><li>使用队列的原因<ol><li>很多时候需要自动选择优先级高的</li></ol></li><li>使用堆操作可以将入队操作和出队操作时间复杂度做到O(logn)级别，最差的情况下是O(logn)级别</li><li>堆<ol><li>二叉堆 Binary heap</li><li>是一棵完全二叉树，如果某一次容纳不下，那么下一层从左到右来容纳节点<ol><li>最下边一层都是叶子节点</li><li>上边一层的叶子节点都在右侧</li><li>所有的节点值，都大于他的孩子值，所以根节点是最大的值</li><li>节点的大小和层次没有关系，只和自己的父节点和孩子节点的关系有关系</li><li>使用数组存储二叉堆<ol><li>左孩子 2*i</li><li>右孩子 2*i+1</li><li>parent = i/2</li></ol></li></ol></li><li>只需要计算最后一个节点的父节点，就是最后一个非叶子节点，之后对于每一个节点进行下沉操作，之后就可以讲一个数组整理成一个完全二叉树</li><li>N个元素取出前M个元素<ol><li>使用优先队列O(NLogM)</li></ol></li><li>索引堆，可以查看堆中间的数据</li><li>二项堆</li><li>斐波那契堆</li><li>广义队列<ol><li>普通队列</li><li>优先级队列</li></ol></li></ol></li></ol><h2 id="线段树（区间树）"><a href="#线段树（区间树）" class="headerlink" title="线段树（区间树）"></a>线段树（区间树）</h2><h3 id="线段树的意义"><a href="#线段树的意义" class="headerlink" title="线段树的意义"></a>线段树的意义</h3><ol><li>对于有一类的问题，我们主要关心的是一个线段，或者是一个区间</li><li>最经典的线段树问题，区间染色</li><li>区间查询</li></ol><h3 id="线段树定义"><a href="#线段树定义" class="headerlink" title="线段树定义"></a>线段树定义</h3><ol><li>线段树不是完全二叉树</li><li>线段树是平衡二叉树<ol><li>最大的深度与最小的深度相差为1</li></ol></li><li>堆也是平衡二叉树，完全二叉树一定是平衡二叉树</li></ol><h2 id="字典树-Trie"><a href="#字典树-Trie" class="headerlink" title="字典树(Trie)"></a>字典树(Trie)</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ol><li>是一个多叉树</li><li>一般只用来处理字符串</li><li>查询的时候只和查询的字符串长度相关，和条目总数无关O(w)</li><li>使用的时候需要考虑不同的语言，不同的情景</li><li>数据结构<ol><li>字符和下一个的映射</li></ol></li></ol><h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><ol><li>孩子指向父亲</li><li>可以处理连接问题</li><li>可以非常快速判断节点中间的连接状态<ol><li>网络是抽象概念：用户之间形成的网络</li></ol></li></ol><h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><ol><li>每个节点是红色的或者是黑色的</li><li>根节点是黑色的</li><li>每一个叶子节点（最后的空节点）是黑色的</li><li>如果一个节点是红色的，那么他的孩子节点都是黑色的</li><li>从任意一个节点到叶子节点，经过的黑色节点是一样的</li><li>所有红节点都是向左倾斜的</li><li>操作<ol><li>颜色反转</li><li>左旋转</li><li>右旋转</li></ol></li></ol><h2 id="2-3树"><a href="#2-3树" class="headerlink" title="2-3树"></a>2-3树</h2><ol><li>绝对平衡的树，从根节点都任意一个叶子的长度都是相同的</li><li>如何维持绝对平衡</li><li>使用二节点和三节点来保持绝对平衡</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      对于数据结构的一点初步认识，开始学习数据结构
+    
+    </summary>
+    
+    
+      <category term="数据结构" scheme="wang-jie-feng.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="笔记" scheme="wang-jie-feng.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="数据结构" scheme="wang-jie-feng.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>nginx安装笔记</title>
