@@ -11,18 +11,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="description" content="jenkins的安装笔记">
-<meta name="keywords" content="docker,笔记,jenkins">
+<meta name="keywords" content="docker,jenkins,笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jenkins的安装">
 <meta property="og:url" content="wang-jie-feng.github.io&#x2F;2019&#x2F;10&#x2F;28&#x2F;jendins%E5%AE%89%E8%A3%85&#x2F;index.html">
 <meta property="og:site_name" content="杰峰的博客">
 <meta property="og:description" content="jenkins的安装笔记">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;wang-jie-feng&#x2F;images&#x2F;master&#x2F;image20191028150741.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;wang-jie-feng&#x2F;images&#x2F;master&#x2F;image20191028150648.png">
-<meta property="og:updated_time" content="2019-10-28T10:21:14.718Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;101.132.149.94:50001&#x2F;a6aac73f-ab2a-4928-8b70-3d53db518241.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;101.132.149.94:50001&#x2F;a1720880-a5cc-4e17-b47c-3d8e3742130b.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;101.132.149.94:50001&#x2F;b8e026a9-5b96-41bd-a4da-c4dfde871215.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;101.132.149.94:50001&#x2F;585cc0b1-8870-4c76-991c-2ba68ecd18e1.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;101.132.149.94:50001&#x2F;6042783b-211c-4fb2-9f12-9a9bfd5f5dc9.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;101.132.149.94:50001&#x2F;cf6ecc12-2d02-4595-9315-1b7673a78502.jpg">
+<meta property="og:updated_time" content="2019-10-29T02:40:56.479Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;wang-jie-feng&#x2F;images&#x2F;master&#x2F;image20191028150741.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;101.132.149.94:50001&#x2F;a6aac73f-ab2a-4928-8b70-3d53db518241.jpg">
   
     <link rel="alternative" href="/atom.xml" title="杰峰的博客" type="application/atom+xml">
   
@@ -206,7 +210,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">309字</span>
+      <span class="post-count">439字</span>
     </span>
   </span>
 
@@ -228,13 +232,13 @@
     
     <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
 <li>jenkins是一个个简单易用的持续集成平台，在此我使用docker的方式部署</li>
-<li>需要主机安装docker和dockercompose，之前已经安装过了，可以参考</li>
+<li>需要主机安装docker和dockercompose，之前有可以参考一下</li>
 </ul>
 <a id="more"></a>    
 
 <h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><h3 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h3><ol>
 <li><p>docker配置文件，<code>docker-compose.yml</code></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3.1'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  jenkins:</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">jenkinsci/jenkins</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">jenkins</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line">      <span class="comment"># 发布端口</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">8080</span><span class="string">:8080</span></span><br><span class="line">      <span class="comment"># 基于 JNLP 的 Jenkins 代理通过 TCP 端口 50000 与 Jenkins master 进行通信</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">50000</span><span class="string">:50000</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      TZ:</span> <span class="string">Asia/Shanghai</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">./data:/var/jenkins_home</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3.1'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  jenkins:</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">jenkinsci/jenkins</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">jenkins</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line">      <span class="comment"># 发布端口</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">8080</span><span class="string">:8080</span></span><br><span class="line">      <span class="comment"># 基于 JNLP 的 Jenkins 代理通过 TCP 端口 50000 与 Jenkins master 进行通信</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">50000</span><span class="string">:50000</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      TZ:</span> <span class="string">Asia/Shanghai</span></span><br><span class="line">      <span class="comment"># 映射目录</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">./data:/var/jenkins_home</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在和配置文件相同的文件夹下，使用<code>docker-compose up -d</code>,默认使用<code>docker-compose.yml</code></p>
 </li>
@@ -243,10 +247,10 @@
 </ol>
 <h3 id="jenkins"><a href="#jenkins" class="headerlink" title="jenkins"></a>jenkins</h3><ol>
 <li><p>打开<code>ip:8080</code>,进入jenkins控制台开始安装，在此选择<code>select plugins to install</code>，注意记得选择<code>user management and security</code>下的<code>Publish Over SSH</code></p>
-<p><img src="https://raw.githubusercontent.com/wang-jie-feng/images/master/image20191028150741.png" alt=""></p>
+<p><img src="http://101.132.149.94:50001/a6aac73f-ab2a-4928-8b70-3d53db518241.jpg" alt=""></p>
 </li>
 <li><p>点击安装，安装过程可能比较长，视个人网络环境和电脑配置而定，可以耐心等待一会，当时我安装的时候等了半个多小时还在安装，所以一定要有耐心。</p>
-<p><img src="https://raw.githubusercontent.com/wang-jie-feng/images/master/image20191028150648.png" alt=""></p>
+<p><img src="http://101.132.149.94:50001/a1720880-a5cc-4e17-b47c-3d8e3742130b.jpg" alt=""></p>
 </li>
 <li><p>有些插件可能安装失败，不过不用担心，可以之后手动安装。</p>
 </li>
@@ -254,7 +258,28 @@
 <h3 id="安装成功"><a href="#安装成功" class="headerlink" title="安装成功"></a>安装成功</h3><ol>
 <li>安装成功之后需要创建第一个管理员用户，按照提示完成即可</li>
 </ol>
-
+<h3 id="配置Jenkins"><a href="#配置Jenkins" class="headerlink" title="配置Jenkins"></a>配置Jenkins</h3><h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><p>首先将jdk和maven的安装包上传到data目录里边，这是jenkins容器映射的目录，然后进入容器<code>docker exec -it jenkins /bin/bash</code>,进入<code>/var/jenkins_home</code>目录，记录下jdk和maven目录</p>
+<ol>
+<li><p>配置jdk</p>
+<p>如图</p>
+<p><img src="http://101.132.149.94:50001/b8e026a9-5b96-41bd-a4da-c4dfde871215.jpg" alt=""></p>
+</li>
+<li><p>配置maven</p>
+<p>如图</p>
+<p><img src="http://101.132.149.94:50001/585cc0b1-8870-4c76-991c-2ba68ecd18e1.jpg" alt=""></p>
+</li>
+<li><p>安装动态参数插件</p>
+<p><code>系统管理--&gt;插件管理--&gt;可选插件--&gt;</code></p>
+<p><img src="http://101.132.149.94:50001/6042783b-211c-4fb2-9f12-9a9bfd5f5dc9.jpg" alt=""></p>
+</li>
+<li><p>之后需要重启docker</p>
+<p><code>docker-compose down</code></p>
+<p><code>docker -compose up -d</code></p>
+<p>安装成功</p>
+<p><img src="http://101.132.149.94:50001/cf6ecc12-2d02-4595-9315-1b7673a78502.jpg" alt=""></p>
+</li>
+</ol>
+<h3 id="安装结束"><a href="#安装结束" class="headerlink" title="安装结束"></a>安装结束</h3><pre><code>至此，差不多安装结束了，可以直接使用了</code></pre>
     
 
     
@@ -323,11 +348,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jenkins</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">jenkins</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
         		</li>
       		
 		</ul>
@@ -408,6 +433,15 @@
 
 
 <nav id="article-nav">
+  
+    <a href="/2019/10/28/%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9B%BE%E5%BA%8A/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          图床服务器搭建
+        
+      </div>
+    </a>
   
   
     <a href="/2019/10/28/docker-compose%E5%AE%89%E8%A3%85/" id="article-nav-older" class="article-nav-link-wrap">
@@ -577,7 +611,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">docker-compose</a>
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -585,11 +619,23 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color5">docker-compose</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">阿里云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
