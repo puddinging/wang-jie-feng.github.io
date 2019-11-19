@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="wang-jie-feng.github.io/"/>
-  <updated>2019-11-14T03:58:26.765Z</updated>
+  <updated>2019-11-19T07:30:09.397Z</updated>
   <id>wang-jie-feng.github.io/</id>
   
   <author>
@@ -17,13 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>git提交</title>
+    <link href="wang-jie-feng.github.io/2019/11/19/git%E5%85%B3%E8%81%94%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/"/>
+    <id>wang-jie-feng.github.io/2019/11/19/git关联到远程仓库/</id>
+    <published>2019-11-19T07:22:14.759Z</published>
+    <updated>2019-11-19T07:30:09.397Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul><li>使用git时候一些小的经验</li></ul><a id="more"></a>    <h1 id="将本地工程关联到远程仓库"><a href="#将本地工程关联到远程仓库" class="headerlink" title="将本地工程关联到远程仓库"></a>将本地工程关联到远程仓库</h1><ul><li>其实非常简单，当你在github创建仓库之后就已经给了提示</li><li>步骤<ol><li>初始化本地工程 git init</li><li>将本地工程添加到暂存区 git add .</li><li>提交到本地仓库 git commit -m “first commit”</li><li>关联到远程仓库 git remote add origin  仓库地址</li><li>推送 git push -u origin master 第一次提交的时候需要加上-u参数</li></ol></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      git学习笔记
+    
+    </summary>
+    
+    
+    
+      <category term="笔记" scheme="wang-jie-feng.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="git" scheme="wang-jie-feng.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
     <title>简历</title>
     <link href="wang-jie-feng.github.io/2019/11/14/%E7%8E%8B%E6%9D%B0%E5%B3%B0%E7%AE%80%E5%8E%86/"/>
     <id>wang-jie-feng.github.io/2019/11/14/王杰峰简历/</id>
     <published>2019-11-14T03:49:23.716Z</published>
-    <updated>2019-11-14T03:58:26.765Z</updated>
+    <updated>2019-11-19T07:31:37.485Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h1><ul><li>手机：15518955832 （南阳）</li><li>Email：<a href="mailto:jiefengfire@163.com" target="_blank" rel="noopener">jiefengfire@163.com</a> </li><li>微信号：15518955832</li></ul><hr><a id="more"></a><h1 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h1><ul><li><p>王杰峰/男/1998</p></li><li><p>本科/南阳理工学院/计算机系/物联网专业</p></li><li><p>技术博客：<a href="http://wang-jie-feng.github.io">http://wang-jie-feng.github.io</a></p></li><li><p>Github： <a href="https://github.com/wang-jie-feng" target="_blank" rel="noopener">https://github.com/wang-jie-feng</a> </p></li><li><p>期望职位：Java开发工程师实习生</p></li><li><p>期望薪资：实习4-6k</p></li><li><p>期望城市：上海</p></li></ul><hr><h1 id="参与项目"><a href="#参与项目" class="headerlink" title="参与项目"></a>参与项目</h1><h2 id="javaWeb商城项目"><a href="#javaWeb商城项目" class="headerlink" title="javaWeb商城项目"></a>javaWeb商城项目</h2><ul><li>javaWeb入门阶段写的一个小的Demo</li><li>实现了商城主页，订单，购物车，支付宝支付等功能</li></ul><h2 id="SpringBoot项目"><a href="#SpringBoot项目" class="headerlink" title="SpringBoot项目"></a>SpringBoot项目</h2><ul><li>使用<code>java</code>实现了一个自用图床，架设在自有服务器上</li><li>使用<code>nginx</code>代理图片资源，实现外网访问</li></ul><h2 id="自动化部署"><a href="#自动化部署" class="headerlink" title="自动化部署"></a>自动化部署</h2><ul><li>使用<code>Jenkins</code>结合<code>github</code>自动化部署应用</li><li>编码 → 构建 → 集成 → 测试 → 交付 → 部署 </li><li>编写脚本结合<code>Jenkins</code>实现从代码到<code>docker</code>的持续交付部署</li></ul><h2 id="目前在做-未完成…"><a href="#目前在做-未完成…" class="headerlink" title="目前在做(未完成…)"></a>目前在做(未完成…)</h2><ul><li>简介<ul><li>文件上传下载工程，实现文件的上传与下载</li></ul></li><li>难点<ol><li>使用对称加密与非对称加密结合方式</li><li>使用java自带数据库<code>derby</code>，使用<code>jdbc</code>原生开发</li><li>不使用任何框架，使用原生<code>Servlet</code>+<code>Tomcat</code>开发</li><li>安全认证：客户端私钥签名，服务端公钥验签</li></ol></li><li>功能介绍<ol><li>文件上传服务端之后使用<code>AES</code>加密，将密钥石笋<code>RSA</code>公钥加密存储数据库中</li><li>客户端获取加密文件与加密之后的秘钥，使用<code>RSA</code>私钥解密，获取密钥将文件解密</li></ol></li></ul><h1 id="技能清单"><a href="#技能清单" class="headerlink" title="技能清单"></a>技能清单</h1><p>以下均为我熟练使用的技能</p><ul><li>Web开发：<code>java</code></li><li>Web框架：SSM/springBoot/springCloud/</li><li>前端框架：Vue</li><li>开发工具：idea/PostMan/webStorm</li><li>数据库相关：MySQL/PLSql/Oracle</li><li>版本管理、文档和自动化部署工具：Svn/Git/Jenkins</li><li>单元测试：Junit/Mock</li></ul><hr><h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p>感谢您花时间阅读我的简历， 期待能够得到同您面谈/面试的机会 。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h1><ul><li>Email：<a href="mailto:jiefengfire@163.com" target="_blank" rel="noopener">jiefengfire@163.com</a> </li><li>手机：15518955832</li></ul><hr><a id="more"></a>    <h1 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h1><ul><li><p>王杰峰/男/1998</p></li><li><p>本科/南阳理工学院/计算机系/物联网专业</p></li><li><p>技术博客：<a href="http://wang-jie-feng.github.io">http://wang-jie-feng.github.io</a></p></li><li><p>Github： <a href="https://github.com/wang-jie-feng" target="_blank" rel="noopener">https://github.com/wang-jie-feng</a> </p></li><li><p>期望职位：Java开发工程师实习生</p></li><li><p>期望薪资：实习4-6k</p></li><li><p>期望城市：上海</p></li></ul><hr><h1 id="参与项目"><a href="#参与项目" class="headerlink" title="参与项目"></a>参与项目</h1><h2 id="javaWeb商城项目"><a href="#javaWeb商城项目" class="headerlink" title="javaWeb商城项目"></a>javaWeb商城项目</h2><ul><li>开发环境：jdk1.8/Tomcat7.0/MySql5.5/IDEA</li><li>技术架构：基于Servlet、JSP、Ajax进行开发</li><li>项目描述：系统主要实现了用户注册，登陆，退出，邮件激活账号，导航栏数据，分页查询，模糊查询，订单详情，购物车，支付宝支付，宝贝收藏等功能</li></ul><h2 id="SpringBoot项目"><a href="#SpringBoot项目" class="headerlink" title="SpringBoot项目"></a>SpringBoot项目</h2><ul><li>开发环境：jdk1.8/Tomcat7.0/maven3.5/springBoot/nginx</li><li>技术架构：基于springBoot实现</li><li>项目描述：项目开放了两个接口<ul><li>传入文件，返回访问地址</li><li>传入文件，返回md格式的图片链接</li></ul></li></ul><h2 id="自动化部署"><a href="#自动化部署" class="headerlink" title="自动化部署"></a>自动化部署</h2><ul><li>使用<code>Jenkins</code>结合<code>github</code>自动化部署应用</li><li>编码 → 构建 → 集成 → 测试 → 交付 → 部署 </li><li>编写脚本结合<code>Jenkins</code>实现从代码到<code>docker</code>的持续交付部署</li><li>实现过程地址： <a href="https://www.wangjiefeng.cn/2019/10/29/jendins测试/#more" target="_blank" rel="noopener">https://www.wangjiefeng.cn/2019/10/29/jendins%E6%B5%8B%E8%AF%95/#more</a> </li></ul><h2 id="目前在做-未完成…"><a href="#目前在做-未完成…" class="headerlink" title="目前在做(未完成…)"></a>目前在做(未完成…)</h2><ul><li>简介<ul><li>文件上传下载，实现文件的上传与下载</li></ul></li><li>难点<ol><li>使用对称加密与非对称加密结合方式</li><li>使用java自带数据库<code>derby</code>，使用<code>jdbc</code>原生开发</li><li>服务端使用原生<code>Servlet</code>+<code>Tomcat</code>开发,客户端使用springBoot开发</li><li>安全认证：客户端私钥签名，服务端公钥验签</li></ol></li><li>功能介绍<ol><li>文件上传服务端之后使用<code>AES</code>加密，将密钥石笋<code>RSA</code>公钥加密存储数据库中</li><li>客户端获取加密文件与加密之后的秘钥，使用<code>RSA</code>私钥解密，获取密钥将文件解密</li></ol></li></ul><hr><h1 id="技能清单"><a href="#技能清单" class="headerlink" title="技能清单"></a>技能清单</h1><p>以下均为我熟练使用的技能</p><ul><li>Web开发：<code>java</code></li><li>Web框架：SSM/springBoot/springCloud/</li><li>前端框架：Vue</li><li>开发工具：idea/PostMan/webStorm</li><li>数据库相关：MySQL/PLSql/Oracle</li><li>版本管理、文档和自动化部署工具：Svn/Git/Jenkins</li><li>单元测试：Junit/Mock</li></ul><h1 id="自我评价"><a href="#自我评价" class="headerlink" title="自我评价"></a>自我评价</h1><ol><li>喜欢学习新技术，并使用它创造更好的东西</li><li>抗压能力强</li><li>完成任务效率较高</li></ol><hr><h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p>感谢您花时间阅读我的简历， 期待能够得到同您面谈/面试的机会 。</p>]]></content>
     
     <summary type="html">
     
