@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="wang-jie-feng.github.io/"/>
-  <updated>2019-11-25T06:20:12.417Z</updated>
+  <updated>2019-11-25T06:46:21.629Z</updated>
   <id>wang-jie-feng.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>netty组件和设计</title>
+    <link href="wang-jie-feng.github.io/2019/11/25/netty%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1/"/>
+    <id>wang-jie-feng.github.io/2019/11/25/netty组件设计/</id>
+    <published>2019-11-25T06:46:33.164Z</published>
+    <updated>2019-11-25T06:46:21.629Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ol><li>上一篇写了一个小的demo，之后继续学习netty</li><li>主要看了一些netty的组件及设计</li></ol><a id="more"></a>    <h2 id="netty组件和设计"><a href="#netty组件和设计" class="headerlink" title="netty组件和设计"></a>netty组件和设计</h2><h3 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h3><ol><li>Channel - Socket</li><li>原生的java网络编程依赖于socket来实现，Channel通过封装其并对其添加了许多的API，大大降低了使用Socket的复杂性，并且拥有许多预定义的，专门化实现的广泛类层结构的根<ol><li>EmbeddedChannel</li><li>LocalServerChannel</li><li>NioDatagramChannel</li><li>NioSctpChannel</li><li>NioSocketChannel</li></ol></li></ol><h3 id="EventLoop"><a href="#EventLoop" class="headerlink" title="EventLoop"></a>EventLoop</h3><ol><li>EventLoop定义了Netty的核心抽象，用于处理连接的生命周期中所发生的事情</li></ol><h3 id="ChannelFuture"><a href="#ChannelFuture" class="headerlink" title="ChannelFuture"></a>ChannelFuture</h3><ol><li>由于Netty所有的I/O操作都是异步的，所以我们需要一个方法可以用于在某个时间点确定其结果的</li><li>可是使得某个操作完成后（无论是否成功）得到通知</li></ol><h3 id="ChannelHandler"><a href="#ChannelHandler" class="headerlink" title="ChannelHandler"></a>ChannelHandler</h3><ol><li>从应用开发人员的角度来看，Netty的主要组件是ChannelHandler，它充当了所有处理入站和出站数据的应用程序逻辑的容器</li><li>ChannelHandler的方法是用网络事件触发的，可以用于几乎所有类型的动作，例如将一种格式转换为另一种格式，或者处理转换过程中的异常</li></ol><h3 id="ChannelPipeline"><a href="#ChannelPipeline" class="headerlink" title="ChannelPipeline"></a>ChannelPipeline</h3><ol><li>handler是处理数据的应用程序的容器，那么Pipeline就是Handler链的容器，并定义了用于在该链上传播入站和出站事件流的API，当Channel被创建时，他会被自动得分配到它专属的ChannelPipeline</li><li>可以使用ChannelInitializer中的initChannel()方法安装一组自定义的ChannelHandler</li></ol><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>开始的时候看这些非常的抽象，但是如果多读几遍，还是非常有理解的，其实不外乎外界请求入站出站，然后在中间进行一些数据处理，异常处理，同时这些还是多线程处理的，多看几遍多一些自己的理解，重要的还是使用其实现一些功能，写一些代码，那样会有更深刻的理解</p>]]></content>
+    
+    <summary type="html">
+    
+      写了一个小demo之后，进行netty的组件和设计的学习
+    
+    </summary>
+    
+    
+    
+      <category term="笔记" scheme="wang-jie-feng.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="netty" scheme="wang-jie-feng.github.io/tags/netty/"/>
+    
+  </entry>
   
   <entry>
     <title>netty入门笔记</title>
