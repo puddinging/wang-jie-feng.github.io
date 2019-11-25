@@ -79,9 +79,9 @@
     
     
     
-      <category term="笔记" scheme="wang-jie-feng.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="git" scheme="wang-jie-feng.github.io/tags/git/"/>
+    
+      <category term="笔记" scheme="wang-jie-feng.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -179,11 +179,11 @@
       <category term="jenkins" scheme="wang-jie-feng.github.io/categories/jenkins/"/>
     
     
+      <category term="笔记" scheme="wang-jie-feng.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
       <category term="docker" scheme="wang-jie-feng.github.io/tags/docker/"/>
     
       <category term="jenkins" scheme="wang-jie-feng.github.io/tags/jenkins/"/>
-    
-      <category term="笔记" scheme="wang-jie-feng.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
     
       <category term="测试" scheme="wang-jie-feng.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
     
@@ -239,11 +239,11 @@
       <category term="jenkins" scheme="wang-jie-feng.github.io/categories/jenkins/"/>
     
     
+      <category term="笔记" scheme="wang-jie-feng.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
       <category term="docker" scheme="wang-jie-feng.github.io/tags/docker/"/>
     
       <category term="jenkins" scheme="wang-jie-feng.github.io/tags/jenkins/"/>
-    
-      <category term="笔记" scheme="wang-jie-feng.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -266,9 +266,9 @@
       <category term="docker-compse" scheme="wang-jie-feng.github.io/categories/docker-compse/"/>
     
     
-      <category term="docker" scheme="wang-jie-feng.github.io/tags/docker/"/>
-    
       <category term="笔记" scheme="wang-jie-feng.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="docker" scheme="wang-jie-feng.github.io/tags/docker/"/>
     
       <category term="docker-compose" scheme="wang-jie-feng.github.io/tags/docker-compose/"/>
     
