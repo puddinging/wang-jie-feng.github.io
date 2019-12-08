@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="wang-jie-feng.github.io/"/>
-  <updated>2019-11-28T06:51:57.844Z</updated>
+  <updated>2019-12-08T13:11:55.212Z</updated>
   <id>wang-jie-feng.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>算法题：插入区间</title>
+    <link href="wang-jie-feng.github.io/2019/12/08/%E6%8F%92%E5%85%A5%E5%8C%BA%E9%97%B4/"/>
+    <id>wang-jie-feng.github.io/2019/12/08/插入区间/</id>
+    <published>2019-12-08T13:03:05.277Z</published>
+    <updated>2019-12-08T13:11:55.212Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前文"><a href="#前文" class="headerlink" title="前文"></a>前文</h1><p>完成一道算法题，插入区间(InsertInstervals)</p><a id="more"></a>    <ol><li><p>题目简介</p><p>给出一个无重叠的 ，按照区间起始端点排序的区间列表。</p><p>在列表中插入一个新的区间，你需要确保列表中的区间仍然有序且不重叠（如果有必要的话，可以合并区间）。</p></li><li><p>代码</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[][] insert(<span class="keyword">int</span>[][] intervals, <span class="keyword">int</span>[] newInterval) &#123;</span><br><span class="line">        List&lt;<span class="keyword">int</span>[]&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] interval : intervals) &#123;</span><br><span class="line">            <span class="keyword">if</span> (newInterval == <span class="keyword">null</span> || interval[<span class="number">1</span>] &lt; newInterval[<span class="number">0</span>]) &#123;</span><br><span class="line">                result.add(interval);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (interval[<span class="number">0</span>] &gt; newInterval[<span class="number">1</span>])&#123;</span><br><span class="line">                result.add(newInterval);</span><br><span class="line">                result.add(interval);</span><br><span class="line">                newInterval = <span class="keyword">null</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                newInterval[<span class="number">0</span>] = Math.min(newInterval[<span class="number">0</span>],interval[<span class="number">0</span>]);</span><br><span class="line">                newInterval[<span class="number">1</span>] = Math.max(newInterval[<span class="number">1</span>],interval[<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (newInterval != <span class="keyword">null</span>) &#123;</span><br><span class="line">            result.add(newInterval);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[][] out = <span class="keyword">new</span> <span class="keyword">int</span>[result.size()][];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; out.length; i++) &#123;</span><br><span class="line">            out[i] = result.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> out;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li><li><p>思路</p><p>首先将位于新数组之前的那些数组添加进去</p><p>然后比较并合并新旧数组</p><p>合并之后，如果之后还有数组，那么先将更新之后的新数组添加，然后添加当前数组并将新数组置为空</p><p>当新数组为空时，如果还有数组，那么和开始一样直接添加即可</p><p>如果合并之后没有数组了，那么只将更新之后的新数组添加即可</p><p>最后将其转化为二维数组，返回</p></li><li><p>思考：目前时间复杂度是log(n)可以使用二分法查找出左右两个元素位于数组位置，之后将其处理可将时间复杂度降为2log(n)</p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      算法题笔记，插入区间
+    
+    </summary>
+    
+    
+    
+      <category term="leetcode" scheme="wang-jie-feng.github.io/tags/leetcode/"/>
+    
+      <category term="算法" scheme="wang-jie-feng.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>jvm对象创建</title>
