@@ -6,22 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="wang-jie-feng.github.io">
-  <title>nginx安装笔记 | 杰峰的博客</title>
+  <title>Tag: I/O | 杰峰的博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="nginx安装笔记">
-<meta name="keywords" content="笔记,nginx">
-<meta property="og:type" content="article">
-<meta property="og:title" content="nginx安装笔记">
-<meta property="og:url" content="wang-jie-feng.github.io/2019/10/27/nginx/index.html">
+  <meta name="description" content="君子藏器于身，待时而动">
+<meta property="og:type" content="website">
+<meta property="og:title" content="杰峰的博客">
+<meta property="og:url" content="wang-jie-feng.github.io/tags/I-O/index.html">
 <meta property="og:site_name" content="杰峰的博客">
-<meta property="og:description" content="nginx安装笔记">
+<meta property="og:description" content="君子藏器于身，待时而动">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-27T03:00:27.807Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx安装笔记">
-<meta name="twitter:description" content="nginx安装笔记">
+<meta name="twitter:title" content="杰峰的博客">
+<meta name="twitter:description" content="君子藏器于身，待时而动">
   
     <link rel="alternative" href="/atom.xml" title="杰峰的博客" type="application/atom+xml">
   
@@ -172,238 +170,41 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-nginx" class="article article-type-page " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-      <header class="article-header">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	
+<a href="/2019/12/11/IO笔记/" class="archive-article-date">
+        <time datetime="2019-12-11T03:58:14.730Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-11</time>
+</a>
+
+        </div>
+    	 
   
+    <h1 itemprop="name">
+	
+	  <a class="archive-article-title" href="/2019/12/11/IO笔记/" target="_blank">I/O学习笔记</a>
   
-    <h1 class="article-title" itemprop="name">
-      nginx安装笔记
     </h1>
   
 
 
-  
-  
-        
-        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
-              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
-        </span>
-
-<a href="/2019/10/27/nginx/" class="archive-article-date">
-        <time datetime="2019-10-26T19:20:26.202Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-27</time>
-</a>
-
-  
-  
-    
-<div style="margin-top:10px;">
-  <span class="post-time">
-    <span class="post-meta-item-icon">
-      <!-- fonts.scss -->
-      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
-      <i class="icon-statistics"></i>
-      <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">669字</span>
-    </span>
-  </span>
-
-  <span class="post-time">
-    &nbsp; | &nbsp;
-    <span class="post-meta-item-icon">
-      <i class="icon-book icon"></i>
-      <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">2分</span>
-    </span>
-  </span>
-</div>
-
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="安装依赖项"><a href="#安装依赖项" class="headerlink" title="安装依赖项"></a>安装依赖项</h2><a id="more"></a>
-
-<ol>
-<li>cent<ol>
-<li><code>yum install -y make cmake gcc gcc-c++</code></li>
-<li><code>yum install -y pcre pcre-devel</code></li>
-<li><code>yum install -y zlib zlib-devel</code></li>
-<li><code>yum install -y openssl openssl-devel</code></li>
-</ol>
-</li>
-<li>ubuntu<ol>
-<li><code>sudo apt-get install build-essential</code></li>
-<li><code>sudo apt-get install libtool</code></li>
-<li><code>sudo apt-get install libpcre3 libpcre3-dev</code></li>
-<li><code>sudo apt-get install zlib1g-dev</code></li>
-<li><code>sudo apt-get install openssl</code> (默认已经安装了)</li>
-</ol>
-</li>
-</ol>
-<h2 id="通过源码安装"><a href="#通过源码安装" class="headerlink" title="通过源码安装"></a>通过源码安装</h2><ol>
-<li>解压<ol>
-<li><code>tar -xzvf nginxFileName -C /usr/local/nginx</code>(先创建一个nginx目录用于安装nginx)</li>
-</ol>
-</li>
-<li>配置<ol>
-<li><code>./configure --prefix=/usr/local/nginx</code></li>
-</ol>
-</li>
-<li>编译<ol>
-<li><code>make</code></li>
-</ol>
-</li>
-<li>安装<ol>
-<li><code>make install</code></li>
-</ol>
-</li>
-<li>启动<ol>
-<li><code>sudo /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</code></li>
-<li>此处需要制定配置文件目录，不然会从默认配置文件路径读取配置</li>
-</ol>
-</li>
-</ol>
-<h2 id="通过包管理工具安装"><a href="#通过包管理工具安装" class="headerlink" title="通过包管理工具安装"></a>通过包管理工具安装</h2><ol>
-<li>ubuntu<ol>
-<li><code>sudo apt-get install nginx</code></li>
-<li>通过此方式安装的软件，配置文件都在 <code>/etc/nginx</code>目录下面</li>
-</ol>
-</li>
-<li>centOs<ol>
-<li>添加<code>yum</code>源 <code>sudo rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</code></li>
-<li>安装nginx <code>sudo yum install -y nginx</code></li>
-<li>启动nginx <code>sudo systemctl start nginx.service</code></li>
-<li>设置开机启动<code>sudo systemctl enable nginx.service</code></li>
-</ol>
-</li>
-</ol>
-<h2 id="nginx目录结构"><a href="#nginx目录结构" class="headerlink" title="nginx目录结构"></a>nginx目录结构</h2><ol>
-<li>网站文件默认存放目录<ol>
-<li><code>/usr/share/nginx/html</code></li>
-</ol>
-</li>
-<li>网站默认站点配置<ol>
-<li><code>/etc/nginx/conf.d/default.conf</code></li>
-</ol>
-</li>
-<li>自定义Nginx站点配置文件存放目录<ol>
-<li><code>/etc/nginx/conf.d/</code></li>
-</ol>
-</li>
-<li>nginx全局配置<ol>
-<li><code>/etc/nginx/nginx.conf</code></li>
-</ol>
-</li>
-<li>nginx启动<ol>
-<li><code>nginx -c nginx.conf</code></li>
-</ol>
-</li>
-</ol>
-<h2 id="配置反向代理端口，做负载均衡"><a href="#配置反向代理端口，做负载均衡" class="headerlink" title="配置反向代理端口，做负载均衡"></a>配置反向代理端口，做负载均衡</h2><ol>
-<li><p>配置两个tomcat，分别使用不同的端口</p>
-</li>
-<li><p>配置nginx配置文件使其代理tomcat</p>
-<ol>
-<li><pre><code>upstream localhost{  
-    #Nginx是如何实现负载均衡的，Nginx的upstream目前支持以下几种方式的分配
-    #1、轮询（默认）
-    #每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。
-    #2、weight
-    #指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。
-    #2、ip_hash
-    #每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。
-    #3、fair（第三方）
-    #按后端服务器的响应时间来分配请求，响应时间短的优先分配。
-    #4、url_hash（第三方）
-    #按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，后端服务器为缓存时比较有效。  
-      #ip_hash; 
-
-      server localhost:8080;  
-      server localhost:8088;
-}
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2.</span><br></pre></td></tr></table></figure>
-server {  
-            listen       80;  
-            server_name  localhost;     
-
-            location / {  
-                   proxy_connect_timeout 3; #nginx跟后端服务器连接超时时间(代理连接超时) 
-                   proxy_send_timeout 30; #后端服务器数据回传时间(代理发送超时) 
-                   proxy_read_timeout 30; #连接成功后，后端服务器响应时间(代理接收超时) 
-                   proxy_pass http://localhost;
-}</code></pre></li>
-</ol>
-</li>
-<li><p>启动nginx</p>
-<p><code>nginx -ct /usr/local/nginx/nginx1.8/conf/nginx.conf</code></p>
-</li>
-<li><p>访问<code>localhost</code>,可以观察到负载均衡 </p>
-</li>
-</ol>
-
-    
-
-    
-    <div class="page-reward">
-      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
-        <div class="tooltip tooltip-east">
-          <span class="tooltip-item">
-            赏
-          </span>
-          <span class="tooltip-content">
-            <span class="tooltip-text">
-              <span class="tooltip-inner">
-                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
-                    class="icon icon-quo-right"></i></p>
-                <div class="reward-box">
-                  
-                  <div class="reward-box-item">
-                    <img class="reward-img" src="http://101.132.149.94:50001/2b1566ca-9373-44a8-84c9-e7f73a656262.jpg">
-                    <span class="reward-type">支付宝</span>
-                  </div>
-                  
-                  
-                  <div class="reward-box-item">
-                    <img class="reward-img" src="http://101.132.149.94:50001/abd5052c-9db2-427f-b80d-50acf2ee73ce.jpg">
-                    <span class="reward-type">微信</span>
-                  </div>
-                  
-                </div>
-              </span>
-            </span>
-          </span>
-        </div>
-      </a>
-    </div>
-    
-
-    
-    <div class="declare"> 
-      <ul class="post-copyright">
-        <li>
-          <strong>本文作者：</strong>
-          王杰峰
-        </li>
-        <li>
-          <strong>本文链接：</strong>
-          <a href="wang-jie-feng.github.io/2019/10/27/nginx/" title="nginx安装笔记" target="_blank">wang-jie-feng.github.io/2019/10/27/nginx/</a>
-        </li>
-        <li>
-          <strong>版权声明： </strong>
-          本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
-        </li>
-      </ul>
-    </div>
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -413,133 +214,25 @@ server {
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">I/O</a>
         		</li>
       		
 		</ul>
 	</div>
 
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/nginx//" class="article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
+          
 
-
-    
-
-    
-    
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a> -->
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http:wang-jie-feng.github.io/2019/10/27/nginx/" alt="微信分享二维码"> -->
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-
-    
-    <div class="clearfix"></div>
-  </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-<nav id="article-nav">
-  
-    <a href="/2019/10/28/数据结构/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          数据结构笔记
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/10/27/linuxqq/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">linuxQQ发布</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
           </div>
@@ -580,9 +273,9 @@ server {
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

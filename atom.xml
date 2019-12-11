@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="wang-jie-feng.github.io/"/>
-  <updated>2019-12-08T13:11:55.212Z</updated>
+  <updated>2019-12-11T06:29:05.984Z</updated>
   <id>wang-jie-feng.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>I/O学习笔记</title>
+    <link href="wang-jie-feng.github.io/2019/12/11/IO%E7%AC%94%E8%AE%B0/"/>
+    <id>wang-jie-feng.github.io/2019/12/11/IO笔记/</id>
+    <published>2019-12-11T03:58:14.730Z</published>
+    <updated>2019-12-11T06:29:05.984Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ol><li>前一段时间看了netty的书，感觉对于多线程以及i/o应该有更多的了解</li><li>主要是关于io的一些笔记</li></ol><a id="more"></a>    <h2 id="IO-模型"><a href="#IO-模型" class="headerlink" title="IO 模型"></a>IO 模型</h2><p>一个输入操作通常包括两个阶段：</p><ol><li>等待数据准备好</li><li>从内核向进程复制数据</li></ol><p>对于一个套接字上的输入操作，第一步通常是等待数据从网络到达，当所等待的数据到达时，它被复制到内核中的某个缓冲区，第二步是从内核缓冲区将数据复制到进程缓冲区</p><p>Unix 有五种 I/O 模型</p><ul><li>阻塞式  I/O</li><li>非阻塞式 I/O</li><li>I/O 复用 (select 和 poll)</li><li>信号驱动式 I/O (SIGIO)</li><li>异步 I/O (AIO)</li></ul><h3 id="阻塞式-I-O"><a href="#阻塞式-I-O" class="headerlink" title="阻塞式  I/O"></a>阻塞式  I/O</h3><p>应用进程被阻塞，直到数据从内核缓冲区复制到应用进程缓冲区中才返回。</p><p>阻塞过程中，其他应用程序还是可以执行的，因此阻塞不意味着整个操作系统都被阻塞，因为其他进程还可以执行，可以不消耗 CPU 时间，这种模型的 CPU 利用率会比较高</p><h3 id="非阻塞式-I-O"><a href="#非阻塞式-I-O" class="headerlink" title="非阻塞式 I/O"></a>非阻塞式 I/O</h3><p>应用进程执行系统调用之后，内核返回一个错误码。应用进程可以继续执行，但是需要不断的执行系统调用来获知 I/O 是否完成，这种方式称为轮询（polling）。</p><p>但是由于 CPU 要处理更多的系统调用，所以这种模型的 CPU 利用率比较低</p><h3 id="I-O-复用-select-和-poll"><a href="#I-O-复用-select-和-poll" class="headerlink" title="I/O 复用 (select 和 poll)"></a>I/O 复用 (select 和 poll)</h3><p>使用 select 或者 poll 等待数据，并且可以等待多个套接字中的任何一个变为可读。这一过程会被阻塞，当某一个套接字可读时返回，之后再使用 recvfrom 把数据从内核复制到进程中。</p><p>它可以让单个进程具有处理多个 I/O 事件的能力。又被称为 Event Driven I/O，即事件驱动 I/O。</p><p>如果一个 Web 服务器没有 I/O 复用，那么每一个 Socket 连接都需要创建一个线程去处理。如果同时有几万个连接，那么就需要创建相同数量的线程。相比于多进程和多线程技术，I/O 复用不需要进程线程创建和切换的开销，系统开销更小。</p><h3 id="信号驱动式-I-O-SIGIO"><a href="#信号驱动式-I-O-SIGIO" class="headerlink" title="信号驱动式 I/O (SIGIO)"></a>信号驱动式 I/O (SIGIO)</h3><p>应用进程使用 sigaction 系统调用，内核立即返回，应用进程可以继续执行，也就是说等待数据阶段应用进程是非阻塞的。内核在数据到达时向应用进程发送 SIGIO 信号，应用进程收到之后在信号处理程序中调用 recvfrom 将数据从内核复制到应用进程中。</p><p>相比于非阻塞式 I/O 的轮询方式，信号驱动 I/O 的 CPU 利用率更高。</p><h3 id="异步-I-O-AIO"><a href="#异步-I-O-AIO" class="headerlink" title="异步 I/O (AIO)"></a>异步 I/O (AIO)</h3><p>应用进程执行 aio_read 系统调用会立即返回，应用进程可以继续执行，不会被阻塞，内核会在所有操作完成之后向应用进程发送信号。</p><p>异步 I/O 与信号驱动 I/O 的区别在于，异步 I/O 的信号是通知应用进程 I/O 完成，而信号驱动 I/O 的信号是通知应用进程可以开始 I/O。</p><h2 id="五大-I-O-模型比较"><a href="#五大-I-O-模型比较" class="headerlink" title="五大 I/O 模型比较"></a>五大 I/O 模型比较</h2><ul><li>同步 I/O ：将数据从内核缓冲区复制到进程缓冲区的阶段，应用进程会阻塞</li><li>异步 I/O ：第二阶段应用进程不会阻塞</li></ul><p>同步 I/O 包括阻塞式 I/O、非阻塞式 I/O、I/O 复用和信号驱动 I/O ，它们的主要区别在第一个阶段。</p><p>非阻塞式 I/O 、信号驱动 I/O 和异步 I/O 在第一阶段不会阻塞。</p>]]></content>
+    
+    <summary type="html">
+    
+      I/O学习笔记
+    
+    </summary>
+    
+    
+    
+      <category term="笔记" scheme="wang-jie-feng.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="I/O" scheme="wang-jie-feng.github.io/tags/I-O/"/>
+    
+  </entry>
   
   <entry>
     <title>算法题：插入区间</title>

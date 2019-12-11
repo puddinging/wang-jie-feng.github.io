@@ -6,22 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="wang-jie-feng.github.io">
-  <title>nginx安装笔记 | 杰峰的博客</title>
+  <title>I/O学习笔记 | 杰峰的博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="nginx安装笔记">
-<meta name="keywords" content="笔记,nginx">
+  <meta name="description" content="I/O学习笔记">
+<meta name="keywords" content="笔记,I&#x2F;O">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx安装笔记">
-<meta property="og:url" content="wang-jie-feng.github.io/2019/10/27/nginx/index.html">
+<meta property="og:title" content="I&#x2F;O学习笔记">
+<meta property="og:url" content="wang-jie-feng.github.io/2019/12/11/IO笔记/index.html">
 <meta property="og:site_name" content="杰峰的博客">
-<meta property="og:description" content="nginx安装笔记">
+<meta property="og:description" content="I/O学习笔记">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-27T03:00:27.807Z">
+<meta property="og:updated_time" content="2019-12-11T06:29:05.984Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx安装笔记">
-<meta name="twitter:description" content="nginx安装笔记">
+<meta name="twitter:title" content="I&#x2F;O学习笔记">
+<meta name="twitter:description" content="I/O学习笔记">
   
     <link rel="alternative" href="/atom.xml" title="杰峰的博客" type="application/atom+xml">
   
@@ -172,14 +172,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-nginx" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-IO笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      nginx安装笔记
+      I/O学习笔记
     </h1>
   
 
@@ -191,8 +191,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2019/10/27/nginx/" class="archive-article-date">
-        <time datetime="2019-10-26T19:20:26.202Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-27</time>
+<a href="/2019/12/11/IO笔记/" class="archive-article-date">
+        <time datetime="2019-12-11T03:58:14.730Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-11</time>
 </a>
 
   
@@ -205,7 +205,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">669字</span>
+      <span class="post-count">964字</span>
     </span>
   </span>
 
@@ -214,7 +214,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">2分</span>
+      <span class="post-count">3分</span>
     </span>
   </span>
 </div>
@@ -225,125 +225,43 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="安装依赖项"><a href="#安装依赖项" class="headerlink" title="安装依赖项"></a>安装依赖项</h2><a id="more"></a>
+    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ol>
+<li>前一段时间看了netty的书，感觉对于多线程以及i/o应该有更多的了解</li>
+<li>主要是关于io的一些笔记</li>
+</ol>
+<a id="more"></a>    
 
+<h2 id="IO-模型"><a href="#IO-模型" class="headerlink" title="IO 模型"></a>IO 模型</h2><p>一个输入操作通常包括两个阶段：</p>
 <ol>
-<li>cent<ol>
-<li><code>yum install -y make cmake gcc gcc-c++</code></li>
-<li><code>yum install -y pcre pcre-devel</code></li>
-<li><code>yum install -y zlib zlib-devel</code></li>
-<li><code>yum install -y openssl openssl-devel</code></li>
+<li>等待数据准备好</li>
+<li>从内核向进程复制数据</li>
 </ol>
-</li>
-<li>ubuntu<ol>
-<li><code>sudo apt-get install build-essential</code></li>
-<li><code>sudo apt-get install libtool</code></li>
-<li><code>sudo apt-get install libpcre3 libpcre3-dev</code></li>
-<li><code>sudo apt-get install zlib1g-dev</code></li>
-<li><code>sudo apt-get install openssl</code> (默认已经安装了)</li>
-</ol>
-</li>
-</ol>
-<h2 id="通过源码安装"><a href="#通过源码安装" class="headerlink" title="通过源码安装"></a>通过源码安装</h2><ol>
-<li>解压<ol>
-<li><code>tar -xzvf nginxFileName -C /usr/local/nginx</code>(先创建一个nginx目录用于安装nginx)</li>
-</ol>
-</li>
-<li>配置<ol>
-<li><code>./configure --prefix=/usr/local/nginx</code></li>
-</ol>
-</li>
-<li>编译<ol>
-<li><code>make</code></li>
-</ol>
-</li>
-<li>安装<ol>
-<li><code>make install</code></li>
-</ol>
-</li>
-<li>启动<ol>
-<li><code>sudo /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</code></li>
-<li>此处需要制定配置文件目录，不然会从默认配置文件路径读取配置</li>
-</ol>
-</li>
-</ol>
-<h2 id="通过包管理工具安装"><a href="#通过包管理工具安装" class="headerlink" title="通过包管理工具安装"></a>通过包管理工具安装</h2><ol>
-<li>ubuntu<ol>
-<li><code>sudo apt-get install nginx</code></li>
-<li>通过此方式安装的软件，配置文件都在 <code>/etc/nginx</code>目录下面</li>
-</ol>
-</li>
-<li>centOs<ol>
-<li>添加<code>yum</code>源 <code>sudo rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</code></li>
-<li>安装nginx <code>sudo yum install -y nginx</code></li>
-<li>启动nginx <code>sudo systemctl start nginx.service</code></li>
-<li>设置开机启动<code>sudo systemctl enable nginx.service</code></li>
-</ol>
-</li>
-</ol>
-<h2 id="nginx目录结构"><a href="#nginx目录结构" class="headerlink" title="nginx目录结构"></a>nginx目录结构</h2><ol>
-<li>网站文件默认存放目录<ol>
-<li><code>/usr/share/nginx/html</code></li>
-</ol>
-</li>
-<li>网站默认站点配置<ol>
-<li><code>/etc/nginx/conf.d/default.conf</code></li>
-</ol>
-</li>
-<li>自定义Nginx站点配置文件存放目录<ol>
-<li><code>/etc/nginx/conf.d/</code></li>
-</ol>
-</li>
-<li>nginx全局配置<ol>
-<li><code>/etc/nginx/nginx.conf</code></li>
-</ol>
-</li>
-<li>nginx启动<ol>
-<li><code>nginx -c nginx.conf</code></li>
-</ol>
-</li>
-</ol>
-<h2 id="配置反向代理端口，做负载均衡"><a href="#配置反向代理端口，做负载均衡" class="headerlink" title="配置反向代理端口，做负载均衡"></a>配置反向代理端口，做负载均衡</h2><ol>
-<li><p>配置两个tomcat，分别使用不同的端口</p>
-</li>
-<li><p>配置nginx配置文件使其代理tomcat</p>
-<ol>
-<li><pre><code>upstream localhost{  
-    #Nginx是如何实现负载均衡的，Nginx的upstream目前支持以下几种方式的分配
-    #1、轮询（默认）
-    #每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。
-    #2、weight
-    #指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。
-    #2、ip_hash
-    #每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。
-    #3、fair（第三方）
-    #按后端服务器的响应时间来分配请求，响应时间短的优先分配。
-    #4、url_hash（第三方）
-    #按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，后端服务器为缓存时比较有效。  
-      #ip_hash; 
-
-      server localhost:8080;  
-      server localhost:8088;
-}
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2.</span><br></pre></td></tr></table></figure>
-server {  
-            listen       80;  
-            server_name  localhost;     
-
-            location / {  
-                   proxy_connect_timeout 3; #nginx跟后端服务器连接超时时间(代理连接超时) 
-                   proxy_send_timeout 30; #后端服务器数据回传时间(代理发送超时) 
-                   proxy_read_timeout 30; #连接成功后，后端服务器响应时间(代理接收超时) 
-                   proxy_pass http://localhost;
-}</code></pre></li>
-</ol>
-</li>
-<li><p>启动nginx</p>
-<p><code>nginx -ct /usr/local/nginx/nginx1.8/conf/nginx.conf</code></p>
-</li>
-<li><p>访问<code>localhost</code>,可以观察到负载均衡 </p>
-</li>
-</ol>
+<p>对于一个套接字上的输入操作，第一步通常是等待数据从网络到达，当所等待的数据到达时，它被复制到内核中的某个缓冲区，第二步是从内核缓冲区将数据复制到进程缓冲区</p>
+<p>Unix 有五种 I/O 模型</p>
+<ul>
+<li>阻塞式  I/O</li>
+<li>非阻塞式 I/O</li>
+<li>I/O 复用 (select 和 poll)</li>
+<li>信号驱动式 I/O (SIGIO)</li>
+<li>异步 I/O (AIO)</li>
+</ul>
+<h3 id="阻塞式-I-O"><a href="#阻塞式-I-O" class="headerlink" title="阻塞式  I/O"></a>阻塞式  I/O</h3><p>应用进程被阻塞，直到数据从内核缓冲区复制到应用进程缓冲区中才返回。</p>
+<p>阻塞过程中，其他应用程序还是可以执行的，因此阻塞不意味着整个操作系统都被阻塞，因为其他进程还可以执行，可以不消耗 CPU 时间，这种模型的 CPU 利用率会比较高</p>
+<h3 id="非阻塞式-I-O"><a href="#非阻塞式-I-O" class="headerlink" title="非阻塞式 I/O"></a>非阻塞式 I/O</h3><p>应用进程执行系统调用之后，内核返回一个错误码。应用进程可以继续执行，但是需要不断的执行系统调用来获知 I/O 是否完成，这种方式称为轮询（polling）。</p>
+<p>但是由于 CPU 要处理更多的系统调用，所以这种模型的 CPU 利用率比较低</p>
+<h3 id="I-O-复用-select-和-poll"><a href="#I-O-复用-select-和-poll" class="headerlink" title="I/O 复用 (select 和 poll)"></a>I/O 复用 (select 和 poll)</h3><p>使用 select 或者 poll 等待数据，并且可以等待多个套接字中的任何一个变为可读。这一过程会被阻塞，当某一个套接字可读时返回，之后再使用 recvfrom 把数据从内核复制到进程中。</p>
+<p>它可以让单个进程具有处理多个 I/O 事件的能力。又被称为 Event Driven I/O，即事件驱动 I/O。</p>
+<p>如果一个 Web 服务器没有 I/O 复用，那么每一个 Socket 连接都需要创建一个线程去处理。如果同时有几万个连接，那么就需要创建相同数量的线程。相比于多进程和多线程技术，I/O 复用不需要进程线程创建和切换的开销，系统开销更小。</p>
+<h3 id="信号驱动式-I-O-SIGIO"><a href="#信号驱动式-I-O-SIGIO" class="headerlink" title="信号驱动式 I/O (SIGIO)"></a>信号驱动式 I/O (SIGIO)</h3><p>应用进程使用 sigaction 系统调用，内核立即返回，应用进程可以继续执行，也就是说等待数据阶段应用进程是非阻塞的。内核在数据到达时向应用进程发送 SIGIO 信号，应用进程收到之后在信号处理程序中调用 recvfrom 将数据从内核复制到应用进程中。</p>
+<p>相比于非阻塞式 I/O 的轮询方式，信号驱动 I/O 的 CPU 利用率更高。</p>
+<h3 id="异步-I-O-AIO"><a href="#异步-I-O-AIO" class="headerlink" title="异步 I/O (AIO)"></a>异步 I/O (AIO)</h3><p>应用进程执行 aio_read 系统调用会立即返回，应用进程可以继续执行，不会被阻塞，内核会在所有操作完成之后向应用进程发送信号。</p>
+<p>异步 I/O 与信号驱动 I/O 的区别在于，异步 I/O 的信号是通知应用进程 I/O 完成，而信号驱动 I/O 的信号是通知应用进程可以开始 I/O。</p>
+<h2 id="五大-I-O-模型比较"><a href="#五大-I-O-模型比较" class="headerlink" title="五大 I/O 模型比较"></a>五大 I/O 模型比较</h2><ul>
+<li>同步 I/O ：将数据从内核缓冲区复制到进程缓冲区的阶段，应用进程会阻塞</li>
+<li>异步 I/O ：第二阶段应用进程不会阻塞</li>
+</ul>
+<p>同步 I/O 包括阻塞式 I/O、非阻塞式 I/O、I/O 复用和信号驱动 I/O ，它们的主要区别在第一个阶段。</p>
+<p>非阻塞式 I/O 、信号驱动 I/O 和异步 I/O 在第一阶段不会阻塞。</p>
 
     
 
@@ -390,7 +308,7 @@ server {
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="wang-jie-feng.github.io/2019/10/27/nginx/" title="nginx安装笔记" target="_blank">wang-jie-feng.github.io/2019/10/27/nginx/</a>
+          <a href="wang-jie-feng.github.io/2019/12/11/IO笔记/" title="I/O学习笔记" target="_blank">wang-jie-feng.github.io/2019/12/11/IO笔记/</a>
         </li>
         <li>
           <strong>版权声明： </strong>
@@ -413,24 +331,13 @@ server {
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">I/O</a>
         		</li>
       		
 		</ul>
 	</div>
 
     
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/nginx//" class="article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
     
 
@@ -480,7 +387,7 @@ server {
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http:wang-jie-feng.github.io/2019/10/27/nginx/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http:wang-jie-feng.github.io/2019/12/11/IO笔记/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -495,18 +402,9 @@ server {
 
 <nav id="article-nav">
   
-    <a href="/2019/10/28/数据结构/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          数据结构笔记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/10/27/linuxqq/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">linuxQQ发布</div>
+    <a href="/2019/12/08/插入区间/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">算法题：插入区间</div>
       <i class="icon-circle-right"></i>
     </a>
   
