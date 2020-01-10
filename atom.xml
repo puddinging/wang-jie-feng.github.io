@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="wang-jie-feng.github.io/"/>
-  <updated>2019-12-30T02:14:36.419Z</updated>
+  <updated>2020-01-10T08:06:52.455Z</updated>
   <id>wang-jie-feng.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>lambda 表达式</title>
+    <link href="wang-jie-feng.github.io/2020/01/10/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>wang-jie-feng.github.io/2020/01/10/lambda表达式/</id>
+    <published>2020-01-10T07:29:52.607Z</published>
+    <updated>2020-01-10T08:06:52.455Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前文"><a href="#前文" class="headerlink" title="前文"></a>前文</h1><p>lambda 表达式使用，记录一下，以防自己忘记</p><a id="more"></a>    <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ol><li>提到 lambda 表达式，首先需要了解的是注解 <code>@FunctionalInterface</code> 以及 <code>default</code> 关键词</li><li><code>@FunctionalInterface</code> 注解是伴随 lambda 表达式一起出现的，他要求接口中的抽象方法只有一个。</li><li>被 default 修饰的方法会有默认实现，也就是不能是抽象方法，必须声明时实现</li><li>这几个结合起来就是，可以使用 lambda 表达式的接口，只能有一个需要被实现的方法，并不是只能有一个方法</li><li>语法形式：() -&gt; {}，其中 () 修饰参数列表，{} 用来描述方法体，-&gt; 为 lambda 运算符</li></ol><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>例子</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ReturnMultiParam</span></span><br><span class="line"><span class="comment"> * 多个参数有返回值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ReturnMultiParam</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">method</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这是一个多个参数有返回值的方法，如果使用 lambda 表达式来实现这个方法，那么我们传入的参数列表和返回值需要与其对应，如下</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ReturnMultiParam returnMultiParam = (<span class="keyword">int</span> x,<span class="keyword">int</span> y) -&gt; &#123;</span><br><span class="line">            <span class="keyword">return</span> x+y; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>根据 lambda 表达式的规则我们可以进行精简</p><ol><li>可以不指定参数类型，java 会自动推断参数类型</li><li>如果方法体只有一句可以省略大括号</li><li>如果方法体只有一句且只有一个 <code>return</code> 语句，可以省略 <code>return</code> 关键词</li></ol><p>精简之后如下</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ReturnMultiParam returnMultiParam = (x, y) -&gt; x+y;</span><br><span class="line">System.out.println(returnMultiParam.method(<span class="number">1</span>, <span class="number">2</span>));</span><br></pre></td></tr></table></figure><p>值得注意的是，参数列表如果省略参数类型，那么都省略，如果不是，那就都加上，不然会报错</p><p>同时可以使用 <code>::</code> 符号引用已经实现的函数快速重写</p><p>例子</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.forEach(System.out::println);</span><br></pre></td></tr></table></figure><p>静态方法通过类名引用</p><p>普通方法通过实例引用</p><p>要求：参数列表和返回值与要重写的方法一模一样</p><p>闭包问题</p><p>lambda 表达式只能引用标记了 final 的外层局部变量，这就是说不能在 lambda 内部修改定义在域外的局部变量，否则会编译错误。</p><p>lambda 表达式的局部变量可以不用声明为 final，但是必须不可被后面的代码修改（即隐性的具有 final 的语义）</p><h2 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h2><ol><li><p>创建新线程</p><p>普通方式创建一个新线程，我们需要通过匿名内部类重写 <code>run</code> 方法，使用 lambda 表达式可以将代码量减低非常多，如下</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Thread t = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        System.out.println(<span class="number">2</span> + <span class="string">":"</span> + i);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    t.start();</span><br></pre></td></tr></table></figure></li></ol><ol start="2"><li><p>排序</p><p>使用 <code>sort</code> 方法可以通过 lambda 表达式来重写内部的 <code>compare()</code> 方法</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.sort((o1, o2) -&gt; o1.getId() - o2.getId());</span><br></pre></td></tr></table></figure></li><li><p>遍历集合</p><p>使用 <code>foreach()</code> 方法可以遍历集合的值</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.forEach(System.out::println);</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      lambda 表达式
+    
+    </summary>
+    
+    
+      <category term="java" scheme="wang-jie-feng.github.io/categories/java/"/>
+    
+    
+      <category term="java" scheme="wang-jie-feng.github.io/tags/java/"/>
+    
+      <category term="lambda" scheme="wang-jie-feng.github.io/tags/lambda/"/>
+    
+  </entry>
   
   <entry>
     <title>terminal 及 vscode 配合使用</title>

@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="wang-jie-feng.github.io">
-  <title>Category: 图床 | 杰峰的博客</title>
+  <title>lambda 表达式 | 杰峰的博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="君子藏器于身，待时而动">
-<meta property="og:type" content="website">
-<meta property="og:title" content="杰峰的博客">
-<meta property="og:url" content="wang-jie-feng.github.io/categories/图床/index.html">
+  <meta name="description" content="lambda 表达式">
+<meta name="keywords" content="java,lambda">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lambda 表达式">
+<meta property="og:url" content="wang-jie-feng.github.io/2020/01/10/lambda表达式/index.html">
 <meta property="og:site_name" content="杰峰的博客">
-<meta property="og:description" content="君子藏器于身，待时而动">
+<meta property="og:description" content="lambda 表达式">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-10T08:06:52.455Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="杰峰的博客">
-<meta name="twitter:description" content="君子藏器于身，待时而动">
+<meta name="twitter:title" content="lambda 表达式">
+<meta name="twitter:description" content="lambda 表达式">
   
     <link rel="alternative" href="/atom.xml" title="杰峰的博客" type="application/atom+xml">
   
@@ -170,92 +172,302 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="page-lambda表达式" class="article article-type-page " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/10/28/搭建自己的图床/" class="archive-article-date">
-        <time datetime="2019-10-28T10:32:44.455Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-28</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/10/28/搭建自己的图床/" target="_blank">图床服务器搭建</a>
   
+    <h1 class="article-title" itemprop="name">
+      lambda 表达式
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2020/01/10/lambda表达式/" class="archive-article-date">
+        <time datetime="2020-01-10T07:29:52.607Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-10</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">690字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">2分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="前文"><a href="#前文" class="headerlink" title="前文"></a>前文</h1><p>lambda 表达式使用，记录一下，以防自己忘记</p>
+<a id="more"></a>    
+
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ol>
+<li>提到 lambda 表达式，首先需要了解的是注解 <code>@FunctionalInterface</code> 以及 <code>default</code> 关键词</li>
+<li><code>@FunctionalInterface</code> 注解是伴随 lambda 表达式一起出现的，他要求接口中的抽象方法只有一个。</li>
+<li>被 default 修饰的方法会有默认实现，也就是不能是抽象方法，必须声明时实现</li>
+<li>这几个结合起来就是，可以使用 lambda 表达式的接口，只能有一个需要被实现的方法，并不是只能有一个方法</li>
+<li>语法形式：() -&gt; {}，其中 () 修饰参数列表，{} 用来描述方法体，-&gt; 为 lambda 运算符</li>
+</ol>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ReturnMultiParam</span></span><br><span class="line"><span class="comment"> * 多个参数有返回值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ReturnMultiParam</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">method</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是一个多个参数有返回值的方法，如果使用 lambda 表达式来实现这个方法，那么我们传入的参数列表和返回值需要与其对应，如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ReturnMultiParam returnMultiParam = (<span class="keyword">int</span> x,<span class="keyword">int</span> y) -&gt; &#123;</span><br><span class="line">            <span class="keyword">return</span> x+y; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>根据 lambda 表达式的规则我们可以进行精简</p>
+<ol>
+<li>可以不指定参数类型，java 会自动推断参数类型</li>
+<li>如果方法体只有一句可以省略大括号</li>
+<li>如果方法体只有一句且只有一个 <code>return</code> 语句，可以省略 <code>return</code> 关键词</li>
+</ol>
+<p>精简之后如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ReturnMultiParam returnMultiParam = (x, y) -&gt; x+y;</span><br><span class="line">System.out.println(returnMultiParam.method(<span class="number">1</span>, <span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+
+<p>值得注意的是，参数列表如果省略参数类型，那么都省略，如果不是，那就都加上，不然会报错</p>
+<p>同时可以使用 <code>::</code> 符号引用已经实现的函数快速重写</p>
+<p>例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+
+<p>静态方法通过类名引用</p>
+<p>普通方法通过实例引用</p>
+<p>要求：参数列表和返回值与要重写的方法一模一样</p>
+<p>闭包问题</p>
+<p>lambda 表达式只能引用标记了 final 的外层局部变量，这就是说不能在 lambda 内部修改定义在域外的局部变量，否则会编译错误。</p>
+<p>lambda 表达式的局部变量可以不用声明为 final，但是必须不可被后面的代码修改（即隐性的具有 final 的语义）</p>
+<h2 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h2><ol>
+<li><p>创建新线程</p>
+<p>普通方式创建一个新线程，我们需要通过匿名内部类重写 <code>run</code> 方法，使用 lambda 表达式可以将代码量减低非常多，如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Thread t = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        System.out.println(<span class="number">2</span> + <span class="string">":"</span> + i);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    t.start();</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>排序</p>
+<p>使用 <code>sort</code> 方法可以通过 lambda 表达式来重写内部的 <code>compare()</code> 方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.sort((o1, o2) -&gt; o1.getId() - o2.getId());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>遍历集合</p>
+<p>使用 <code>foreach()</code> 方法可以遍历集合的值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="http://101.132.149.94:50001/2b1566ca-9373-44a8-84c9-e7f73a656262.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="http://101.132.149.94:50001/abd5052c-9db2-427f-b80d-50acf2ee73ce.jpg">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          王杰峰
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="wang-jie-feng.github.io/2020/01/10/lambda表达式/" title="lambda 表达式" target="_blank">wang-jie-feng.github.io/2020/01/10/lambda表达式/</a>
+        </li>
+        <li>
+          <strong>版权声明： </strong>
+          本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+        </li>
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">阿里云</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">lambda</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/图床//" class="article-tag-list-link color3">图床</a>
+        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+    
 
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http:wang-jie-feng.github.io/2020/01/10/lambda表达式/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/30/wsl及terminal使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">terminal 及 vscode 配合使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -296,10 +508,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
