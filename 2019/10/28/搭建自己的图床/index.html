@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="description" content="使用阿里云来搭建自己的图床服务器">
-<meta name="keywords" content="笔记,nginx,阿里云,springboot,java">
+<meta name="keywords" content="笔记,java,nginx,阿里云,springboot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图床服务器搭建">
 <meta property="og:url" content="wang-jie-feng.github.io/2019/10/28/搭建自己的图床/index.html">
@@ -254,7 +254,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start nginx.service</span><br><span class="line">sudo systemctl enable nginx.service</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在浏览器中输入你的服务器地址，即可看到此图片，则安装成功</p>
-<p><img src="http://101.132.149.94:50001/9733ad1c-336d-4c8f-8cf9-d53cce38bbb5.jpg" alt=""></p>
+<p><img src="http://101.132.149.94:50001/9733ad1c-336d-4c8f-8cf9-d53cce38bbb5.jpg" alt></p>
 </li>
 </ol>
 <h4 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h4><p>安装完成之后需要配置一下，设置图片文件路径</p>
@@ -266,7 +266,7 @@
 <h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>为了方便，我直接打包好了之后将jar包上传到了服务器上</p>
 <p>使用<code>nohup java -jar fileName.jar &gt;temp.log&amp;</code>，将会以守护进程运行，temp.log将会在当前文件夹下输出日志 &gt;是覆盖式增加</p>
 <h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>使用postman进行调试，可以正常返回文件路径，完美</p>
-<p><img src="http://101.132.149.94:50001/d573d5fd-134a-410a-89a4-6891d05c15c4.jpg" alt=""></p>
+<p><img src="http://101.132.149.94:50001/d573d5fd-134a-410a-89a4-6891d05c15c4.jpg" alt></p>
 <h3 id="待续"><a href="#待续" class="headerlink" title="待续"></a>待续</h3><p>最好可以有一个前端页面，这样可以更好使用一些，体验更好一些…</p>
 
     
@@ -337,6 +337,10 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
         		</li>
       		 
@@ -346,10 +350,6 @@
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
@@ -604,11 +604,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color5">jdk8</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Optional</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,7 +624,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">netty</a>
+                <a href="javascript:void(0)" class="js-tag color4">I/O</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -629,6 +637,26 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">netty</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">lambda</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,55 +672,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">阿里云</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">简历</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">六大原则</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">I/O</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -708,7 +692,31 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">lambda</a>
+                <a href="javascript:void(0)" class="js-tag color3">简历</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">阿里云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">六大原则</a>
               </li>
             
             <div class="clearfix"></div>
